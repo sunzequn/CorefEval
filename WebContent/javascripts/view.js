@@ -32,6 +32,7 @@ function constructURIBySource(source, URIList) {
 		var cid = URIList[i]['cid'];
 		var URI = URIList[i]['URI'];
 		var sumMarked = URIList[i]['sumMarked'];
+		var string = sumMarked + "  :  " + URI;
 		var isCorefed = URIList[i]['isCorefed'];
 		var labelClass = 'label uriLabel';
 		if(isCorefed == 1) {
@@ -41,19 +42,13 @@ function constructURIBySource(source, URIList) {
 			labelClass += ' label-important';
 		}
 		
-		var li = $('<li>');
+		var li = $('<h5>');
 		var label = $('<a></a>', {
 						class: labelClass,
-						text: sumMarked,
+						text: string,
 						href: markPrefix + cid
 					});
 		li.html(label);
-		
-		var label1 = $('<h5></h5>', {
-						text: sumMarked,
-					});
-//		li.html(label1);
-		
 		ul.append(li);
 			
 	}
