@@ -1,0 +1,7 @@
+init
+	input: iid uid?
+	output: baseURI currentURI sumNum curNum curTag
+
+mark
+	input: iid uid? tag
+	output: status

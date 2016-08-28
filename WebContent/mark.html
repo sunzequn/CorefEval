@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+	<head> 
+		<meta charset="utf-8"> 
+		<title>Coref Evaluator</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<meta name="description" content=""> 
+		<meta name="author" content=""> 
+
+		<!-- Le styles --> 
+		<link href="./css/bootstrap.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="./css/mark.css" />
+		<link href="./css/bootstrap-responsive.css" rel="stylesheet"> 
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --> 
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]--> 
+
+		<!-- Le fav and touch icons --> 
+		<link rel="shortcut icon" href="./ico/favicon.ico"> 
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="./ico/apple-touch-icon-144-precomposed.png"> 
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./ico/apple-touch-icon-114-precomposed.png"> 
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./ico/apple-touch-icon-72-precomposed.png"> 
+		<link rel="apple-touch-icon-precomposed" href="./ico/apple-touch-icon-57-precomposed.png"> 
+	</head> 
+
+	<body> 
+
+		<div class="navbar navbar-inverse navbar-fixed-top"> 
+			<div class="navbar-inner"> 
+				<div class="container"> 
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+					</a> 
+					<a class="brand" href="index.html">Coref Evaluator</a> 
+					<div class="nav-collapse"> 
+						<ul class="nav"> 
+							<li><a href="home.html">Home</a></li> 
+							<li class="active"><a href="#">Mark</a></li>
+							<li><a id="nav-view" href="view.html">View</a></li> 
+						</ul>
+						<ul class="nav pull-right">
+							<li class="active"><a href="#" id="userEmail"></a></li>
+							<li><a href="./servlet/logout">Logout</a></li>
+						</ul>
+					</div><!--/.nav-collapse --> 
+				</div> 
+			</div> 
+		</div> 
+
+		<div id="upperPane"  class="container"> 
+			<span id="baseURI"></span>
+			<div id="progress" class="span4">
+				<div class="row-fluid">
+					<div class="progress span10">
+						<div id="progressBar" class="bar" style="width:0%"></div>
+					</div>
+					<span class="span2"><span id="curPos"></span>/<span id="sumPos"></span></span>
+				</div>	
+				<div class="btn-group">
+					<button id="prevBtn" class="btn"><i class="icon-arrow-left"></i></button>
+					<button id="nextBtn" class="btn"><i class="icon-arrow-right"></i></button>
+				</div>
+			</div> <!-- /progress -->
+		</div> <!-- /upperPane --> 
+		<div id="middlePane" class="container">
+			<span id="currentURI"></span>
+			<div id="evaluatingButtons" class="btn-group" data-toggle="buttons-radio">
+				<button id="correctBtn" class="btn btn-large">Correct</button>
+				<button id="notSureBtn" class="btn btn-large">Not Sure</button>
+				<button id="wrongBtn" class="btn btn-large">Wrong</button>
+			</div>
+		</div> <!-- /middlePane --> 
+
+		<div id="lowerPane" class="container">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#lB" data-toggle="tab">Original</a></li>
+					<li class=""><a href="#lA" data-toggle="tab">SView</a></li>
+					<li class=""><a href="#lD" data-toggle="tab">Input (Original)</a></li> 
+					<li class=""><a href="#lC" data-toggle="tab">Input (SView)</a></li>      
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane" id="lA">
+						<iframe id="viewerA" class="span12 viewer" frameborder="0"></iframe>
+					</div>
+					<div class="tab-pane active" id="lB">
+						<iframe id="viewerB" class="span12 viewer" frameborder="0"></iframe>
+					</div>
+					<div class="tab-pane" id="lC">
+						<iframe id="viewerC" class="span12 viewer" frameborder="0"></iframe>
+					</div>
+					<div class="tab-pane" id="lD">
+						<iframe id="viewerD" class="span12 viewer" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>
+			
+		</div> <!-- /lowerPane --> 
+		<!-- Le javascript
+		================================================== --> 
+		<!-- Placed at the end of the document so the pages load faster --> 
+		<script src="./javascripts/jquery.js"></script> 
+		<script src="./javascripts/mark.js"></script> 
+		<script src="./javascripts/bootstrap.min.js"></script> 
+	</body> 
+</html> 

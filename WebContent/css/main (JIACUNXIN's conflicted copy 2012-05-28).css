@@ -1,0 +1,28 @@
+#logo {
+	width: 200px;
+	margin-top: 30px;
+}
+
+a {
+	cursor: pointer;
+}
+
+.sampleRow {
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+}
+
+#samples {
+	border: solid 1px;
+	
+}
+
+#inputPane {
+	border: solid 1px;
+}
+
+#menuPane {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}

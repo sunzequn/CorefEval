@@ -1,0 +1,39 @@
+
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+#upperPane {
+	margin-bottom: 10px;
+}
+
+#container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+#middlePane {
+	margin-bottom: 10px;
+}
+
+#baseURI {
+	font-size: 13pt;
+}
+
+#currentURI {
+	font-size: 15pt;
+}
+
+.btn-group {
+	position: relative;
+	top: -5px;
+}
+
+#container ul {
+	list-style: decimal;
+}
+
+#container ul li {
+	margin-bottom: 10px;
+}
