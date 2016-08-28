@@ -31,6 +31,8 @@ function parseJSON(jsonStr) {
 	$('#baseURI').html(data['baseURI']);
 	$('#nav-view').attr('href', 'view.html?bid=' + data['bid']);
 	$('#currentURI').html(data['currentURI']);
+	$('#sumMarked').html(data['sumMarked']);
+	$('#cid').html(data['cid']);
 	$('#viewerA').attr('src',sviewAccessPoint + data['currentDESURI']);
 	$('#viewerB').attr('src',data['currentURI']);
 	$('#viewerC').attr('src',sviewAccessPoint + data['baseDESURI']);
@@ -62,7 +64,7 @@ function setCorefedStatus(isCorefed) {
 		break;
 		default:
 			$('#currentURI').addClass('label');
-			$('#notSureBtn').addClass('active');
+//			$('#notSureBtn').addClass('active');
 		break;
 	}
 }
@@ -116,9 +118,9 @@ function btnListener() {
 			location.href='mark.html?cid='+cid;
 		break;
 		case 'nextBtn':
-			markURI(0);
-//			cid++;
-//			location.href='mark.html?cid='+cid;
+//			markURI(0);
+			cid++;
+			location.href='mark.html?cid='+cid;
 		break;
 		default:
 		break;

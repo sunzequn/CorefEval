@@ -19,6 +19,7 @@ public class CurrentURI {
 	private int position;
 	private int sumURI;
 	private int isCorefed;
+	private int sumMarked;
 	private boolean hasPrev;
 	private boolean hasNext;
 	
@@ -42,6 +43,12 @@ public class CurrentURI {
 		this.baseDESURI = DES.getDES(baseURI);
 	}
 	
+	public int getSumMarked() {
+		return sumMarked;
+	}
+	public void setSumMarked(int sumMarked) {
+		this.sumMarked = sumMarked;
+	}
 	public String getCurrentDESURI() {
 		return currentDESURI;
 	}
@@ -129,8 +136,10 @@ public class CurrentURI {
 	public String toString() {
 		return "CurrentURI [cid=" + cid + ", bid=" + bid + ", currentURI=" + currentURI + ", baseURI=" + baseURI
 				+ ", currentDESURI=" + currentDESURI + ", baseDESURI=" + baseDESURI + ", position=" + position
-				+ ", sumURI=" + sumURI + ", isCorefed=" + isCorefed + ", hasPrev=" + hasPrev + ", hasNext=" + hasNext
-				+ "]";
+				+ ", sumURI=" + sumURI + ", isCorefed=" + isCorefed + ", sumMarked=" + sumMarked + ", hasPrev="
+				+ hasPrev + ", hasNext=" + hasNext + "]";
 	}
+
+	
 
 }

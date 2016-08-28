@@ -11,6 +11,7 @@ public class CorefedURI {
 	private int cid;
 	private String URI;
 	private int isCorefed;
+	private int sumMarked;
 	/**
 	 * @param cid
 	 * @param uRI
@@ -58,4 +59,12 @@ public class CorefedURI {
 	public void setIsCorefed(int isCorefed) {
 		this.isCorefed = isCorefed;
 	}
+	public int getSumMarked() {
+		return sumMarked;
+	}
+	public void setSumMarked(int sumMarked) {
+		this.sumMarked = sumMarked;
+	}
+	
+	
 }

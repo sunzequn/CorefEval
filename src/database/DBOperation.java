@@ -17,6 +17,20 @@ import user.User;
 
 public class DBOperation {
 	
+	public static int countCid(int cid) throws SQLException {
+		Connection conn = DBConnection.getConnection();
+		Statement stmt = conn.createStatement();
+		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid;
+		ResultSet rs = stmt.executeQuery(sql);
+		int res = -1;
+		if(rs.next()) {
+			res =  rs.getInt(1);
+		}
+		conn.close();
+		stmt.close();
+		rs.close();
+		return res;
+	}
 	
 	public static List<BaseURI> listAllBaseURI() throws SQLException {
 		List<BaseURI> baseURIList = new ArrayList <BaseURI>();
@@ -245,10 +259,10 @@ public class DBOperation {
 		Statement stmt = conn.createStatement();
 		String sql = "select isCorefed from evaluation where cid =" + cid + " and uid=" + uid;
 		ResultSet rs = stmt.executeQuery(sql);
-		int sum = 0;
+		int sum = -100;
 		if(rs.next()) {
-			sum = rs.getInt(1);			
-		}
+			sum = rs.getInt(1);		
+		} 
 		conn.close();
 		stmt.close();
 		rs.close();
@@ -406,6 +420,8 @@ public class DBOperation {
 			String source = rs.getString(3);
 			int isCorefed = isCorefed(uid, cid);			
 			CorefedURI curURI = new CorefedURI(cid, uri, isCorefed);
+			int sumMarked = DBOperation.countCid(cid);
+			curURI.setSumMarked(sumMarked);
 			List<CorefedURI> URIList = URIMap.get(source);
 			if(URIList == null) {
 				URIList = new ArrayList<CorefedURI>();

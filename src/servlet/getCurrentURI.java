@@ -29,6 +29,8 @@ public class getCurrentURI extends HttpServlet{
 					cid = DBOperation.getCidByProcess(uid);
 				}
 				CurrentURI curURI = DBOperation.getCurrentURI(uid, cid);
+				int sumMarked = DBOperation.countCid(curURI.getCid());
+				curURI.setSumMarked(sumMarked);
 				JSONObject json = JSONObject.fromObject(curURI);
 				resp.getOutputStream().print(new String(json.toString().getBytes("ISO-8859-1"),"UTF-8"));
 				DBConnection.shutdown();
