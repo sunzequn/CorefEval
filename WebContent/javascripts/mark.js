@@ -1,4 +1,4 @@
-$(document).ready(initPage);
+ $(document).ready(initPage);
 var cid = -1;
 //var sviewAccessPoint = 'http://ws.nju.edu.cn/explorer/entity.jsp?q=';
 var sviewAccessPoint = 'http://ws.nju.edu.cn/sview/views/eview.jsp?lang=en&query=';
@@ -30,13 +30,25 @@ function parseJSON(jsonStr) {
 	var data = $.parseJSON(jsonStr);
 	$('#baseURI').html(data['baseURI']);
 	$('#nav-view').attr('href', 'view.html?bid=' + data['bid']);
+//	alert(data['bid']);
 	$('#currentURI').html(data['currentURI']);
 	$('#sumMarked').html(data['sumMarked']);
 	$('#cid').html(data['cid']);
 	$('#viewerA').attr('src',sviewAccessPoint + data['currentDESURI']);
-	$('#viewerB').attr('src',data['currentURI']);
+//	alert(data['currentFbMid']);
+	if (data['currentFbMid'].indexOf("freebase") > -1){
+		$('#viewerB').attr('src',data['currentFbMid']);
+	} else {
+		$('#viewerB').attr('src',data['currentURI']);
+	}
 	$('#viewerC').attr('src',sviewAccessPoint + data['baseDESURI']);
-	$('#viewerD').attr('src',data['baseURI']);
+	
+	if (data['baseMid'].indexOf("freebase") > -1){
+		$('#viewerD').attr('src',data['baseMid']);
+	} else {
+		$('#viewerD').attr('src',data['baseURI']);
+	}
+	
 	cid = data['cid'];
 	setProgress(data['position'],data['sumURI']);
 	setCorefedStatus(data['isCorefed']);

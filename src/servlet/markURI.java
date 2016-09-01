@@ -16,8 +16,12 @@ public class markURI extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		Object uidS =  req.getSession().getAttribute("uid");
+		if (uidS == null) {
+			resp.sendRedirect("../index.html");
+		}
+		int uid = (Integer)uidS;
 		
-		int uid = (Integer) req.getSession().getAttribute("uid");
 		int cid = Integer.parseInt(req.getParameter("cid"));
 		int isCorefed = Integer.parseInt(req.getParameter("isCorefed"));
 		try {

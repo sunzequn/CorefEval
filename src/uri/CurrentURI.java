@@ -13,7 +13,9 @@ public class CurrentURI {
 	private int cid;
 	private int bid;
 	private String currentURI;
+	private String currentFbMid = null;
 	private String baseURI;
+	private String baseMid = null;
 	private String currentDESURI;
 	private String baseDESURI;
 	private int position;
@@ -132,14 +134,27 @@ public class CurrentURI {
 	public void setHasNext(boolean hasNext) {
 		this.hasNext = hasNext;
 	}
+	
+	public String getCurrentFbMid() {
+		return currentFbMid;
+	}
+	
+	public void setCurrentFbMid(String currentFbMid) {
+		this.currentFbMid = currentFbMid;
+	}
+	
+	public String getBaseMid() {
+		return baseMid;
+	}
+	public void setBaseMid(String baseMid) {
+		this.baseMid = baseMid;
+	}
 	@Override
 	public String toString() {
-		return "CurrentURI [cid=" + cid + ", bid=" + bid + ", currentURI=" + currentURI + ", baseURI=" + baseURI
-				+ ", currentDESURI=" + currentDESURI + ", baseDESURI=" + baseDESURI + ", position=" + position
-				+ ", sumURI=" + sumURI + ", isCorefed=" + isCorefed + ", sumMarked=" + sumMarked + ", hasPrev="
-				+ hasPrev + ", hasNext=" + hasNext + "]";
+		return "CurrentURI [cid=" + cid + ", bid=" + bid + ", currentURI=" + currentURI + ", currentFbMid="
+				+ currentFbMid + ", baseURI=" + baseURI + ", baseMid=" + baseMid + ", currentDESURI=" + currentDESURI
+				+ ", baseDESURI=" + baseDESURI + ", position=" + position + ", sumURI=" + sumURI + ", isCorefed="
+				+ isCorefed + ", sumMarked=" + sumMarked + ", hasPrev=" + hasPrev + ", hasNext=" + hasNext + "]";
 	}
-
-	
 
 }

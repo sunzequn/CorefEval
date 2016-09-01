@@ -17,9 +17,25 @@ import user.User;
 
 public class DBOperation {
 	
+	public static String getMid(String uri) throws SQLException {
+		Connection conn = DBConnection.getConnection();
+		Statement stmt = conn.createStatement();
+		String sql = "SELECT fbmid FROM fb WHERE fburi = '" + uri + "'";
+		ResultSet rs = stmt.executeQuery(sql);
+		String res = null;
+		if(rs.next()) {
+			res =  rs.getString(1);
+		}
+		conn.close();
+		stmt.close();
+		rs.close();
+		return res;
+	}
+	
 	public static int countCid(int cid) throws SQLException {
 		Connection conn = DBConnection.getConnection();
 		Statement stmt = conn.createStatement();
+//		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid + " AND isCorefed <> 0";
 		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid;
 		ResultSet rs = stmt.executeQuery(sql);
 		int res = -1;
@@ -231,7 +247,6 @@ public class DBOperation {
 			boolean hasPrev = (isValidCid(cid-1))?true:false;
 			boolean hasNext = (isValidCid(cid+1))?true:false;
 			curURI = new CurrentURI(cid,bid,corefedURI,baseURI,position,sum,isCorefed,hasPrev,hasNext);
-			System.out.println(curURI);
 		}
 		conn.close();
 		stmt.close();
@@ -451,6 +466,35 @@ public class DBOperation {
 		stmt.close();
 		rs.close();
 		return userList;
+	}
+	
+	public static int insertMid(String uri, String mid) throws SQLException {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement("select fburi from fb where fburi = ?");
+		pstmt.setString(1, uri);
+		ResultSet rs = pstmt.executeQuery();
+		int bid;
+		if(rs.next()) {
+			bid = 0;
+		}
+		else {
+			pstmt = conn.prepareStatement("insert into fb(fburi, fbmid) values(?,?)");
+			pstmt.setString(1, uri);
+			pstmt.setString(2, mid);
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("SELECT LAST_INSERT_ID();");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bid = rs.getInt(1);
+			}
+			else {
+				bid = -1;
+			}
+		}
+		conn.close();
+		pstmt.close();
+		rs.close();
+		return bid;
 	}
 	
 	public static int insertBaseURI(String baseURI) throws SQLException {

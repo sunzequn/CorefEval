@@ -40,6 +40,8 @@ function constructURIBySource(source, URIList) {
 		}
 		else if (isCorefed == -1) {
 			labelClass += ' label-important';
+		} else if(isCorefed == 0){
+			labelClass += ' label-inverse';
 		}
 		
 		var li = $('<h5>');
