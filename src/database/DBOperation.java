@@ -35,8 +35,8 @@ public class DBOperation {
 	public static int countCid(int cid) throws SQLException {
 		Connection conn = DBConnection.getConnection();
 		Statement stmt = conn.createStatement();
-//		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid + " AND isCorefed <> 0";
-		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid;
+		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid + " AND isCorefed <> 0";
+//		String sql = "SELECT COUNT(*) FROM evaluation WHERE cid = " + cid;
 		ResultSet rs = stmt.executeQuery(sql);
 		int res = -1;
 		if(rs.next()) {
